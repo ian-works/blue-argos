@@ -1,0 +1,483 @@
+/* BlueArgos landing page — 브랜드 색상은 docs/UI_SPEC.md·lib/features/driving/view/driving_visual_tuning.dart 실제 값과 일치시킴 */
+
+:root {
+  --bg: #000000;
+  --bg-elevated: #0a0d14;
+  --panel: #10141c;
+  --panel-border: #1f2530;
+  --ring: #5ea8ff;
+  --ring-dim: #8a93a2;
+  --ring-core: #16233d;
+  --text: #f7f9fc;
+  --text-dim: #aab2c0;
+  --text-faint: #6b7180;
+  --accent-red: #e8383f;
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --max-width: 1080px;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+.br-mobile { display: none; }
+
+/* ---------- Nav ---------- */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.brand-mark {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--ring), var(--ring-core) 70%);
+  box-shadow: 0 0 10px rgba(94, 168, 255, 0.6);
+  flex-shrink: 0;
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-links a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.nav-links a:hover { color: var(--text); }
+
+/* ---------- Hero ---------- */
+
+.hero {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 72px 24px 40px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.eyebrow {
+  color: var(--ring);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin: 0 0 18px;
+}
+
+.hero h1 {
+  font-size: clamp(32px, 4.4vw, 48px);
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+  font-weight: 800;
+}
+
+.hero-lead {
+  color: var(--text-dim);
+  font-size: 16px;
+  max-width: min(46ch, 100%);
+  margin: 0 0 28px;
+}
+
+.hero-lead strong { color: var(--text); font-weight: 700; }
+
+.hero-badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(94, 168, 255, 0.12);
+  color: var(--ring);
+  border: 1px solid rgba(94, 168, 255, 0.28);
+}
+
+.pill-muted {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-dim);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ---------- Phone visual ---------- */
+
+.hero-visual { display: flex; justify-content: center; }
+
+.phone {
+  width: 240px;
+  aspect-ratio: 9 / 19.5;
+  background: #050608;
+  border-radius: 38px;
+  border: 1px solid #24293380;
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8), inset 0 0 0 6px #0c0e13;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.phone-notch {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 16px;
+  border-radius: 10px;
+  background: #050608;
+  border: 1px solid #1a1e26;
+}
+
+.phone-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+.phone-caption {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+
+/* ---------- Blue Ring ---------- */
+
+.ring-stage {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ring-stage-lg { width: 220px; height: 220px; }
+
+.ring-core {
+  position: absolute;
+  inset: 14%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #1c2c4d, var(--ring-core) 65%, #060a12 100%);
+}
+
+/* 링 도형(개구부 있는 conic-gradient)을 두 겹으로 그린다 — 아래 흐릿한 겹(.ring-glow)은
+   앰비언트 발광만 담당하고, 위 또렷한 겹(.blue-ring)이 6시 방향 개구부의 경계를 선명하게
+   유지한다. 두 겹을 하나로 합쳐 filter: drop-shadow만 크게 주면 블러가 개구부까지 덮어버려
+   C자 모양이 안 보이는 문제가 있었다(스크린샷 검수로 발견, 수정). */
+
+.blue-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 285deg,
+    var(--ring) 0%,
+    var(--ring) 41.7%,
+    transparent 66.7%,
+    transparent 75%,
+    var(--ring) 100%
+  );
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 14px), #000 calc(100% - 15.5px), #000 100%);
+  mask: radial-gradient(farthest-side, transparent calc(100% - 14px), #000 calc(100% - 15.5px), #000 100%);
+  animation: ring-breathe 3.6s ease-in-out infinite;
+}
+
+.blue-ring-lg {
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 22px), #000 calc(100% - 24px), #000 100%);
+  mask: radial-gradient(farthest-side, transparent calc(100% - 22px), #000 calc(100% - 24px), #000 100%);
+}
+
+.ring-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 285deg,
+    var(--ring) 0%,
+    var(--ring) 41.7%,
+    transparent 66.7%,
+    transparent 75%,
+    var(--ring) 100%
+  );
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 14px), #000 calc(100% - 15.5px), #000 100%);
+  mask: radial-gradient(farthest-side, transparent calc(100% - 14px), #000 calc(100% - 15.5px), #000 100%);
+  filter: blur(10px);
+  opacity: 0.65;
+  animation: ring-breathe 3.6s ease-in-out infinite;
+}
+
+.ring-glow-lg {
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 22px), #000 calc(100% - 24px), #000 100%);
+  mask: radial-gradient(farthest-side, transparent calc(100% - 22px), #000 calc(100% - 24px), #000 100%);
+  filter: blur(16px);
+}
+
+@keyframes ring-breathe {
+  0%, 100% { transform: scale(0.97); opacity: 0.88; }
+  50% { transform: scale(1.03); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blue-ring { animation: none; }
+}
+
+/* ---------- Sections ---------- */
+
+main section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 88px 24px;
+}
+
+.section-head { max-width: 640px; margin: 0 0 48px; }
+
+.section-head h2 {
+  font-size: clamp(26px, 3vw, 34px);
+  letter-spacing: -0.01em;
+  margin: 0 0 12px;
+  font-weight: 800;
+}
+
+.section-head p {
+  color: var(--text-dim);
+  font-size: 15px;
+  margin: 0;
+}
+
+/* ---------- Cards ---------- */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-md);
+  padding: 26px 22px;
+}
+
+.card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(94, 168, 255, 0.12);
+  color: var(--ring);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.card-icon svg { width: 20px; height: 20px; }
+
+.card h3 {
+  font-size: 16px;
+  margin: 0 0 8px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.card p {
+  color: var(--text-dim);
+  font-size: 14px;
+  margin: 0;
+}
+
+/* ---------- Steps ---------- */
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 28px;
+}
+
+.steps li {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 20px;
+  align-items: start;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--panel-border);
+}
+
+.steps li:last-child { border-bottom: none; padding-bottom: 0; }
+
+.step-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(94, 168, 255, 0.35);
+  color: var(--ring);
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.steps h3 {
+  margin: 0 0 6px;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.steps p {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 14.5px;
+  max-width: min(58ch, 100%);
+}
+
+/* ---------- Ring section ---------- */
+
+.ring-section {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 56px;
+  align-items: center;
+  background: radial-gradient(ellipse at 20% 50%, rgba(94, 168, 255, 0.06), transparent 60%);
+  border-radius: var(--radius-lg);
+}
+
+.ring-section-visual { display: flex; justify-content: center; }
+
+.ring-section-text h2 {
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 0 0 18px;
+}
+
+.ring-section-text p {
+  color: var(--text-dim);
+  font-size: 15px;
+  max-width: min(52ch, 100%);
+  margin: 0 0 14px;
+}
+
+.ring-section-text strong { color: var(--text); }
+
+/* ---------- Footer ---------- */
+
+.footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 40px;
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 40px 24px 56px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.footer-note, .footer-copy {
+  color: var(--text-faint);
+  font-size: 12.5px;
+  margin: 0 0 6px;
+}
+
+/* ---------- Reveal-on-scroll ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; padding-top: 48px; }
+  .hero-visual { order: -1; }
+  .br-mobile { display: inline; }
+  .cards { grid-template-columns: repeat(2, 1fr); }
+  .ring-section { grid-template-columns: 1fr; text-align: left; }
+  main section { padding: 64px 20px; }
+}
+
+@media (max-width: 520px) {
+  .cards { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .steps li { grid-template-columns: 36px 1fr; }
+}
