@@ -37,7 +37,7 @@
   <section class="hero">
     <div class="hero-inner">
       <p class="eyebrow">개인정보 없음 · 광고 없음 · 통신·배터리 최소화</p>
-      <h1>말 없이, 조용히<br class="br-mobile" /> 지켜보는 과속카메라 알림</h1>
+      <h1>깨끗하고 쾌적한<br class="br-mobile" /> 과속 카메라 알림</h1>
       <p class="hero-lead">
         BlueArgos는 이름도 화면도 배터리도 군더더기가 없습니다.
         아무것도 입력하지 않아도 되고, 광고가 끼어들지 않으며,
@@ -78,21 +78,17 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.6-3 8.4-7 10-4-1.6-7-5.4-7-10V6l7-3z"/><path d="M9.5 12l1.8 1.8L14.8 10"/></svg>
         </div>
         <h3>개인정보 입력 없음</h3>
-        <p>회원가입도, 전화번호도, 계정도 없습니다. 위치 정보는 기기 안에서만 계산되고 어디로도 전송되지 않습니다.</p>
-      </article>
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M8 7V5.5a4 4 0 018 0V7"/><path d="M3 3l18 18"/></svg>
-        </div>
-        <h3>광고 없음</h3>
-        <p>배너도, 팝업도, 리워드 영상도 없습니다. 운전 중 화면엔 오직 필요한 정보만 남깁니다.</p>
+        <ul class="card-points">
+          <li><strong>회원가입·계정 없음</strong> — 전화번호도 묻지 않고, 위치 정보는 기기 안에서만 계산되고 어디로도 전송되지 않습니다.</li>
+          <li><strong>목적지 입력 없음</strong> — 어디로 가는지 몰라도 됩니다. 경로를 넣지 않아도 주변 카메라를 그때그때 알려줍니다.</li>
+        </ul>
       </article>
       <article class="card">
         <div class="card-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a7 7 0 100-14 7 7 0 000 14z"/><path d="M12 9v3.5l2.2 2.2"/><path d="M3 3l18 18"/></svg>
         </div>
         <h3>통신 최소화</h3>
-        <p>카메라 위치는 미리 내려받아 기기에 저장한 정적 데이터로 판단합니다. 실시간으로 서버에 묻지 않아도 항상 동작합니다.</p>
+        <p>카메라 위치는 미리 내려받아 기기에 저장한 정적 데이터로 판단합니다. 실시간으로 서버에 묻지 않아도 항상 동작하고, 갱신될 때마다 받는 양도 약 3MB 수준 — 지도를 계속 스트리밍하는 일반 내비게이션 데이터 사용량의 100분의 1 정도밖에 안 됩니다.</p>
       </article>
       <article class="card">
         <div class="card-icon" aria-hidden="true">
@@ -100,6 +96,13 @@
         </div>
         <h3>배터리 최소화</h3>
         <p>저속 구간에서는 위치 확인 주기를 늘리고, 실제로 필요한 순간에만 정밀 추적으로 전환합니다.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M8 7V5.5a4 4 0 018 0V7"/><path d="M3 3l18 18"/></svg>
+        </div>
+        <h3>광고 없음</h3>
+        <p>배너도, 팝업도, 리워드 영상도 없습니다. 광고 대신 한 번만 저렴하게 구매하면 끝 — 평생 자동으로 업데이트됩니다.</p>
       </article>
     </div>
   </section>
@@ -114,7 +117,7 @@
         <span class="step-num">1</span>
         <div>
           <h3>사전 경고</h3>
-          <p>현재 속도로 카메라에 도달할 것으로 예상되면, 미리 정한 시간(기본 20초) 안에 음성과 화면으로 알립니다.</p>
+          <p>흔한 내비게이션은 카메라까지 남은 "거리"로 경고합니다 — 그래서 저속일 땐 쓸데없이 일찍, 자칫하면 늦게 울리기도 합니다. BlueArgos는 지금 속도로 도달하기까지 남은 "시간"(기본 20초)을 기준으로 삼아, 얼마나 빠르게 달리든 항상 같은 여유를 두고 알립니다.</p>
         </div>
       </li>
       <li>
@@ -134,8 +137,8 @@
       <li>
         <span class="step-num">4</span>
         <div>
-          <h3>조용한 업데이트</h3>
-          <p>전국 카메라 위치 데이터는 주기적으로 자동 최신화됩니다. 사용자가 신경 쓸 일은 없습니다.</p>
+          <h3>자동 보정 업데이트</h3>
+          <p>잘못됐거나 오래된 카메라 정보를 발견하면, 정기 갱신 주기(평균 2주, 최대 한 달) 안에 자동으로 바로잡혀 다음 업데이트에 반영됩니다. 사용자가 따로 신고하거나 손볼 일은 없습니다.</p>
         </div>
       </li>
     </ol>

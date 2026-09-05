@@ -349,6 +349,26 @@ main section {
   margin: 0;
 }
 
+.card-points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-points li {
+  color: var(--text-dim);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.card-points strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
 /* ---------- Steps ---------- */
 
 .steps {
