@@ -1,0 +1,59 @@
+{
+  "releases": [
+    {
+      "tag": "nmm-build-1.0.0-80",
+      "version": "1.0.0+80",
+      "date": "2026-09-09",
+      "ko": [
+        "교차로 등 다른 도로에 있는 카메라를 전방 카메라로 착각해 잘못 경고하던 문제를 고쳤습니다."
+      ],
+      "en": [
+        "Fixed an issue where a camera on a different, crossing road was sometimes mistaken for a camera ahead and triggered an incorrect warning."
+      ]
+    },
+    {
+      "tag": "nmm-build-1.0.0-79",
+      "version": "1.0.0+79",
+      "date": "2026-09-08",
+      "ko": [
+        "영어를 지원합니다. 기기 언어가 영어면 화면과 음성 안내가 자동으로 영어로 전환됩니다."
+      ],
+      "en": [
+        "Added English support. When your device language is English, both on-screen text and voice announcements switch automatically."
+      ]
+    },
+    {
+      "tag": "nmm-build-1.0.0-76",
+      "version": "1.0.0+76",
+      "date": "2026-09-07",
+      "ko": [
+        "지하차도·고가차도 구간을 지날 때 안내가 더 정확해졌습니다."
+      ],
+      "en": [
+        "Improved guidance accuracy when driving through underpasses and overpasses."
+      ]
+    },
+    {
+      "tag": "nmm-build-1.0.0-73",
+      "version": "1.0.0+73",
+      "date": "2026-09-05",
+      "ko": [
+        "특정 상황에서 음성 안내가 몇 초간 끊기던 문제를 고쳤습니다."
+      ],
+      "en": [
+        "Fixed an issue where voice announcements could go silent for a few seconds in certain situations."
+      ]
+    },
+    {
+      "tag": "nmm-build-1.0.0-70",
+      "version": "1.0.0+70",
+      "date": "2026-09-05",
+      "ko": [
+        "구간단속(평균속도 단속) 카메라를 지원합니다."
+      ],
+      "en": [
+        "Added support for section (average-speed) enforcement cameras."
+      ]
+    }
+  ]
+}

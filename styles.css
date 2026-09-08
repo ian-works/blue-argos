@@ -485,6 +485,78 @@ main section {
   transform: translateY(0);
 }
 
+/* ---------- Release notes ---------- */
+
+.releases-head {
+  padding-bottom: 24px !important;
+}
+
+.releases-head h1 {
+  font-size: clamp(28px, 3.4vw, 38px);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 0 0 12px;
+}
+
+.releases-head-en {
+  color: var(--text-faint) !important;
+  font-size: 13px !important;
+}
+
+.releases-list-section {
+  padding-top: 0 !important;
+}
+
+.release-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.release-card {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-md);
+  padding: 22px 24px;
+}
+
+.release-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.release-version {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--ring);
+}
+
+.release-date {
+  font-size: 13px;
+  color: var(--text-faint);
+}
+
+.release-text {
+  margin: 0 0 6px;
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+.release-text:last-child { margin-bottom: 0; }
+
+.release-text-ko { color: var(--text); }
+
+.release-text-en { color: var(--text-dim); }
+
+.release-loading {
+  color: var(--text-faint);
+  font-size: 14px;
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 860px) {
