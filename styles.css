@@ -741,10 +741,47 @@ main section {
   line-height: 1.5;
 }
 
+/* "카메라 DB 보정" 단계 전용 — 아래 5단계(자동 보정 업데이트)의 평범한
+   지도와 구분되도록, AI가 지도를 스캔하며 정보를 채우는 느낌을 중앙의
+   반짝이는 아이콘 + 확산 펄스로 표현한다. */
+.mini-map-ai-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(94, 168, 255, 0.18);
+  border: 1px solid rgba(94, 168, 255, 0.55);
+  color: var(--ring);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.mini-map-ai-icon svg { width: 13px; height: 13px; }
+
+.mini-map-ai-icon::before {
+  content: "";
+  position: absolute;
+  inset: -9px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(94, 168, 255, 0.45);
+  animation: mini-map-scan 2.4s ease-out infinite;
+}
+
+@keyframes mini-map-scan {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mini-sign--approach::before,
   .mini-sign--flash,
-  .mini-sign--overspeed {
+  .mini-sign--overspeed,
+  .mini-map-ai-icon::before {
     animation: none;
   }
 }
