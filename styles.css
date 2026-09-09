@@ -250,6 +250,13 @@ a { color: inherit; }
    의 PHASE_LABELS). */
 .phone-caption {
   margin: 0;
+  /* 항상 최상위 레이어에 그려야 한다는 요청 — position 없이는 z-index가
+     먹지 않으므로(static 요소) relative로 승격한 뒤 phone-notch(2)·
+     camera-sign(3)보다 확실히 높은 값을 준다. 실제로 겹칠 일은 없는
+     위치지만(캡션은 ring-stage 아래 별도 영역) 애매한 페인트 순서에
+     기대지 않고 명시적으로 고정한다. */
+  position: relative;
+  z-index: 10;
   /* 라운드 박스 크기는 단계마다 바뀌면 안 된다는 요청 — 가장 긴 문구
      ("시간 기반 전방 과속 카메라 알림", 실측 약 175px)를 기준으로 폭을
      고정하고, 짧은 문구는 그 안에서 가운데 정렬한다. */
@@ -709,12 +716,25 @@ main section {
   .nav-links { display: none; }
   .steps li { grid-template-columns: 36px 1fr; }
 
-  /* 좁은 화면에서 블루 링/숫자/캡션이 상대적으로 작아 보인다는 피드백 —
-     ring-stage의 마스크·아이콘 두께가 전부 고정 px라 폰 크기 자체를
-     키우면 비율이 어긋나므로, .phone 전체를 transform으로 균일하게
-     확대한다(내부 conic-gradient·마스크·글자 크기가 전부 그대로 비례
-     커진다). transform은 레이아웃 높이에 반영되지 않아 원본 박스보다
-     커진 만큼 위아래로 넘치는데, .hero의 grid gap(48px)이 이를 충분히
-     흡수한다(1.12배 기준 상하 각 약 31px 초과, 여유 17px). */
-  .phone { transform: scale(1.12); }
+  /* 좁은 화면에서 블루 링/숫자/캡션이 상대적으로 작아 보인다는 피드백(1차
+     1.12배로도 부족하다는 재요청) — ring-stage의 마스크·아이콘 두께가
+     전부 고정 px라 폰 크기 자체를 키우면 비율이 어긋나므로, .phone
+     전체를 transform으로 균일하게 확대한다(내부 conic-gradient·마스크·
+     글자 크기가 전부 그대로 비례 커진다).
+     transform은 레이아웃 크기에 반영되지 않아 원본 박스(240×520px)보다
+     커진 만큼 사방으로 그냥 넘치는데, 1.3배 이상에서는 예전처럼 .hero의
+     grid gap만으로 세로 초과분을 못 흡수해 아래 헤드라인 텍스트와
+     겹친다 — 그래서 --mobile-phone-scale 커스텀 프로퍼티 하나를
+     .hero-visual/.phone이 함께 참조하게 하고, .hero-visual의
+     min-height를 "원본 높이 × 배율"로 미리 확보해(+ align-items:center)
+     넘친 부분이 이 컨테이너 안에서만 흡수되고 이웃 요소를 침범하지
+     않게 한다. 가로는 body의 overflow-x:hidden이 뷰포트 경계에서
+     그냥 잘라주므로(가장 좁은 320px 기기 기준 약 1.33배까지 안전) 1.3은
+     그 안에서 여유를 두고 고른 값이다. */
+  .hero-visual {
+    --mobile-phone-scale: 1.3;
+    min-height: calc(520px * var(--mobile-phone-scale));
+    align-items: center;
+  }
+  .phone { transform: scale(var(--mobile-phone-scale)); }
 }
