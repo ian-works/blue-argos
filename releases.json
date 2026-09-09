@@ -1,6 +1,23 @@
 {
   "releases": [
     {
+      "tag": "nmm-build-1.0.0-83",
+      "version": "1.0.0+83",
+      "date": "2026-09-09",
+      "ko": [
+        "특정 조건에서 전방에 없는 카메라 경고가 잠깐 나왔다 사라지던 문제를 고쳤습니다.",
+        "GPS 신호 상태 음성 안내를 설정에서 켜고 끌 수 있습니다(기본은 꺼짐).",
+        "현재 속도 표시가 기본으로 켜지도록 바뀌었습니다.",
+        "메뉴에서 BlueArgos 소개 및 사용법 페이지로 바로 이동할 수 있습니다."
+      ],
+      "en": [
+        "Fixed an issue where a warning for a camera not actually ahead could briefly appear and disappear in certain conditions.",
+        "Added a setting to turn the GPS signal status voice announcement on or off (off by default).",
+        "The current speed display is now shown by default.",
+        "Added a menu item that opens the BlueArgos introduction and usage guide page."
+      ]
+    },
+    {
       "tag": "nmm-build-1.0.0-80",
       "version": "1.0.0+80",
       "date": "2026-09-09",
