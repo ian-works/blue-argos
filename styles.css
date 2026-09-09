@@ -511,7 +511,9 @@ main section {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  /* 카드가 4개→5개로 늘면서(경로 설정 없음 카드 추가) 4열이면 마지막 한
+     장이 다음 줄에 혼자 남는다 — 3열로 바꿔 3+2로 자연스럽게 줄바꿈. */
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
 }
 
@@ -547,26 +549,6 @@ main section {
   color: var(--text-dim);
   font-size: 14px;
   margin: 0;
-}
-
-.card-points {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.card-points li {
-  color: var(--text-dim);
-  font-size: 13.5px;
-  line-height: 1.5;
-}
-
-.card-points strong {
-  color: var(--text);
-  font-weight: 700;
 }
 
 /* ---------- Steps ---------- */
