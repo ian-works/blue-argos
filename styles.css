@@ -383,7 +383,10 @@ a { color: inherit; }
   position: absolute;
   inset: 14%;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #1c2c4d, var(--ring-core) 65%, #060a12 100%);
+  /* 예전엔 좌상단으로 치우친 radial-gradient 하이라이트를 줬는데, 그게
+     링 안쪽에 "링보다 옅은 파란색 원"처럼 따로 도드라져 보인다는 피드백
+     — 단일 색으로 평평하게 채워 그 원을 없앤다. */
+  background: var(--ring-core);
 }
 
 /* 링 도형(개구부 있는 conic-gradient)을 두 겹으로 그린다 — 아래 흐릿한 겹(.ring-glow)은
