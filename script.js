@@ -85,7 +85,7 @@
       "step5.updated": "업데이트됨",
       "ring.h2": "블루 링",
       "ring.p1": "평소 화면 중앙에는 은은하게 숨 쉬는 파란 원, <strong>블루 링</strong>이 켜져 있습니다. 전방에 알릴 카메라가 없다는 뜻이자, 앱이 조용히 정상 동작 중이라는 신호입니다.",
-      "ring.p2": "말이 많은 앱이 되고 싶지 않았습니다. 아무 일도 없을 땐 화면도, 소리도, 배터리도 최대한 아낍니다 — 정말 알려야 할 순간에만 목소리를 냅니다.",
+      "ring.p2": "꼭 필요할 때만 확실한 화면과 음성으로 안전한 운행을 도와드립니다.",
       "footer.note": "과속카메라 위치 데이터 출처: 경찰청 · 공공데이터포털(data.go.kr), 공공누리 제1유형(출처표시).",
       "footer.copy": "© BlueArgos. 개인정보를 수집하지 않는 앱입니다."
     },
@@ -134,7 +134,7 @@
       "step5.updated": "Updated",
       "ring.h2": "Blue Ring",
       "ring.p1": "At the center of the screen, a softly breathing blue circle — the <strong>Blue Ring</strong> — stays lit. It means there's no camera ahead to warn you about, and that the app is quietly running as normal.",
-      "ring.p2": "We didn't want to build a chatty app. When nothing's happening, it goes easy on the screen, the sound, and the battery — and speaks up only when it truly matters.",
+      "ring.p2": "Only when it truly matters does it step in — with a clear screen alert and a clear voice — to help you drive safely.",
       "footer.note": "Speed camera location data source: Korea National Police Agency · Public Data Portal (data.go.kr), KOGL Type 1 (Attribution).",
       "footer.copy": "© BlueArgos. An app that collects no personal data."
     }
