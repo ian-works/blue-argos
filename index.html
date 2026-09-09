@@ -8,9 +8,25 @@
 <meta name="theme-color" content="#000000" />
 <link rel="icon" href="assets/app_icon.png" />
 <meta property="og:type" content="website" />
+<meta property="og:url" content="https://ian-works.github.io/blue-argos/" />
 <meta property="og:title" data-i18n-attr="content:meta.title" content="BlueArgos — 깨끗한 과속카메라 알림" />
 <meta property="og:description" data-i18n-attr="content:meta.ogDescription" content="개인정보 없이, 광고 없이, 배터리도 아끼며 조용히 지켜보는 과속카메라 알림 앱." />
-<meta property="og:image" content="assets/app_icon.png" />
+<!-- 예전엔 og:image가 assets/app_icon.png(1024×1024, 일부러 흐릿하게
+     퍼지는 글로우 디자인)를 그대로 썼는데, 메신저가 이걸 가로로 긴
+     미리보기 카드 비율로 잘라 넣으면서 "해상도가 흐릿하다"는 피드백으로
+     이어졌다 — 실제로는 파일 자체가 저해상도인 게 아니라, 테두리 없는
+     소프트 글로우 아트를 억지로 크롭한 결과였다. OG 권장 비율(1200×630,
+     여기선 2배인 2400×1260)에 맞춰 로고+워드마크+태그라인을 제대로
+     구성한 assets/og_image.png로 교체(styles.css의 .blue-ring/.ring-glow
+     conic-gradient를 그대로 재현해 만듦, 스크린샷 방식으로 렌더링). -->
+<meta property="og:image" content="https://ian-works.github.io/blue-argos/assets/og_image.png" />
+<meta property="og:image:width" content="2400" />
+<meta property="og:image:height" content="1260" />
+<meta property="og:image:type" content="image/png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" data-i18n-attr="content:meta.title" content="BlueArgos — 깨끗한 과속카메라 알림" />
+<meta name="twitter:description" data-i18n-attr="content:meta.ogDescription" content="개인정보 없이, 광고 없이, 배터리도 아끼며 조용히 지켜보는 과속카메라 알림 앱." />
+<meta name="twitter:image" content="https://ian-works.github.io/blue-argos/assets/og_image.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
