@@ -7,7 +7,6 @@
   --panel-border: #1f2530;
   --ring: #5ea8ff;
   --ring-dim: #8a93a2;
-  --ring-core: #16233d;
   --text: #f7f9fc;
   --text-dim: #aab2c0;
   --text-faint: #6b7180;
@@ -354,6 +353,12 @@ a { color: inherit; }
   color: var(--text);
 }
 
+/* #ring 섹션의 정적 "7" 표시 — 처음 36px에서 2.5배(90px)로 키웠더니 너무
+   크다는 재요청으로 20% 줄임(90 × 0.8 = 72px). */
+.ring-stage-lg .speed-value {
+  font-size: 72px;
+}
+
 /* 전방 카메라 표지(lib/features/driving/view/speed_sign.dart의 SpeedSign/
    OverspeedSign을 참고한 색 구성) — 평소엔 안 보이다가(opacity 0) 카메라
    접근 단계에서 자라나며 나타난다. inset:0라 ring-stage-hero 크기를
@@ -383,15 +388,12 @@ a { color: inherit; }
   color: #17181b;
 }
 
-.ring-core {
-  position: absolute;
-  inset: 14%;
-  border-radius: 50%;
-  /* 예전엔 좌상단으로 치우친 radial-gradient 하이라이트를 줬는데, 그게
-     링 안쪽에 "링보다 옅은 파란색 원"처럼 따로 도드라져 보인다는 피드백
-     — 단일 색으로 평평하게 채워 그 원을 없앤다. */
-  background: var(--ring-core);
-}
+/* .ring-core는 삭제했다 — 안쪽 원이 무슨 색이든("링보다 옅은 파란색") 결국
+   또렷하게 도드라져 보인다는 지적이 반복돼, 코어 자체를 없애고 안쪽엔
+   진짜 배경(폰 화면 배경/섹션 배경)이 그대로 비치게 했다. 대신
+   .ring-glow의 블러가 자기 마스크의 안쪽 경계를 넘어 중앙까지 번지던
+   문제가 남아 있어(마스크가 필터보다 먼저 적용되므로 블러가 그 경계를
+   다시 부드럽게 넘나든다) — 아래 .ring-glow-wrap에서 별도로 처리한다. */
 
 /* 링 도형(개구부 있는 conic-gradient)을 두 겹으로 그린다 — 아래 흐릿한 겹(.ring-glow)은
    앰비언트 발광만 담당하고, 위 또렷한 겹(.blue-ring)이 6시 방향 개구부의 경계를 선명하게
@@ -418,6 +420,27 @@ a { color: inherit; }
 .blue-ring-lg {
   -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 22px), #000 calc(100% - 24px), #000 100%);
   mask: radial-gradient(farthest-side, transparent calc(100% - 22px), #000 calc(100% - 24px), #000 100%);
+}
+
+/* .ring-glow는 마스크 다음에 blur가 적용돼(mask → filter 순서) 자기 마스크의
+   안쪽 경계를 블러 반경만큼 다시 넘어 중앙까지 번진다 — 그게 "링보다
+   옅은 파란 원"의 실제 원인이었다(.ring-core를 없앤 뒤에도 이 번짐 자체는
+   남아 있었다). 블러 없는 이 래퍼에 블루 링과 똑같은 안쪽 경계의(14px/
+   22px) 하드 마스크를 한 번 더 걸어, 이미 블러 처리된 결과 중 구멍
+   안쪽으로 새어든 부분만 정확히 잘라낸다 — 바깥으로 번지는 앰비언트
+   발광은 이 래퍼의 마스크가 그 반경 밖에서는 계속 불투명이라 그대로
+   살아있다. */
+.ring-glow-wrap {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 14px), #000 calc(100% - 14px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 14px), #000 calc(100% - 14px));
+}
+
+.ring-glow-wrap-lg {
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 22px), #000 calc(100% - 22px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 22px), #000 calc(100% - 22px));
 }
 
 .ring-glow {
