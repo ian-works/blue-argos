@@ -737,4 +737,17 @@ main section {
     align-items: center;
   }
   .phone { transform: scale(var(--mobile-phone-scale)); }
+
+  /* 하단 캡션은 위 .phone 확대(1.3배)를 그대로 따라가지만, "그것만으로는
+     아직 작다"는 재요청으로 캡션 자체의 선언 크기도 한 번 더 키운다
+     (font-size 12→15px, 패딩도 비례해서 키움). .phone의 로컬 좌표계는
+     여전히 원본 240px 폭이라(interior 238px, .phone의 1px 테두리 제외)
+     너무 크게 잡으면 알약이 화면 테두리에 거의 닿는다 — 가장 긴 문구
+     ("시간 기반 전방 과속 카메라 알림")가 이 폰트/패딩에서 실측 약
+     216px이라 220px로 고정해 여유(약 9px씩)를 남겼다. */
+  .phone-caption {
+    width: 220px;
+    font-size: 15px;
+    padding: 5px 12px;
+  }
 }
