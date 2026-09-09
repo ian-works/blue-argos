@@ -95,6 +95,35 @@ a { color: inherit; }
 
 .nav-links a:hover { color: var(--text); }
 
+/* nav-inner는 space-between으로 brand↔오른쪽 그룹만 벌린다 — nav-links와
+   lang-toggle을 이 래퍼로 묶어야 셋을 각각 벌리지 않고(중간에 끼임)
+   기존처럼 오른쪽에 나란히 붙는다. */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.lang-toggle {
+  appearance: none;
+  border: 1px solid rgba(94, 168, 255, 0.3);
+  background: rgba(94, 168, 255, 0.1);
+  color: var(--ring);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 5px 11px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.lang-toggle:hover {
+  background: rgba(94, 168, 255, 0.18);
+  border-color: rgba(94, 168, 255, 0.5);
+}
+
 /* ---------- Hero ---------- */
 
 .hero {
@@ -163,10 +192,18 @@ a { color: inherit; }
 .phone {
   width: 240px;
   aspect-ratio: 9 / 19.5;
-  background: #050608;
+  background: #0b0e14;
   border-radius: 38px;
-  border: 1px solid #24293380;
-  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8), inset 0 0 0 6px #0c0e13;
+  /* 배경(#000)에 거의 묻히던 예전 값(rgba(36,41,51,.5) 테두리 + 어두운 인셋)이
+     너무 흐리다는 피드백 — 테두리를 밝히고 은은한 블루 글로우를 더해 화면과
+     경계가 분명히 보이도록 했다. */
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  box-shadow:
+    0 30px 80px -20px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 0 70px -14px rgba(94, 168, 255, 0.4),
+    inset 0 0 0 6px #131722,
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -184,8 +221,20 @@ a { color: inherit; }
   width: 70px;
   height: 16px;
   border-radius: 10px;
-  background: #050608;
-  border: 1px solid #1a1e26;
+  background: #0b0e14;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  z-index: 2;
+}
+
+/* 하단 애니메이션 단계(경고/과속 결과)에서 화면 전체가 점멸하는 효과 —
+   phone-screen 뒤, notch 앞에 깔리는 전용 레이어(script.js가 제어). */
+.phone-flash {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: transparent;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .phone-screen {
@@ -195,12 +244,42 @@ a { color: inherit; }
   gap: 22px;
 }
 
+/* 지금 재생 중인 데모 단계를 한 줄로 설명하는 캡션(2026-09-09 피드백) —
+   원래는 "실제 앱이 보여줄 문구"와 "단계 설명 라벨" 두 줄이었는데, 한 줄만
+   남겨 달라는 요청으로 이 라벨 문구 하나로 합쳤다(단계별 문구는 script.js
+   의 PHASE_LABELS). */
 .phone-caption {
   margin: 0;
-  font-size: 11px;
-  letter-spacing: 0.03em;
-  color: var(--text-faint);
-  text-transform: uppercase;
+  /* 라운드 박스 크기는 단계마다 바뀌면 안 된다는 요청 — 가장 긴 문구
+     ("시간 기반 전방 과속 카메라 알림", 실측 약 175px)를 기준으로 폭을
+     고정하고, 짧은 문구는 그 안에서 가운데 정렬한다. */
+  width: 184px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  /* 카메라 경고/과속 결과 단계에서 배경 전체가 흰/빨강으로 점멸하는 동안에도
+     묻히지 않도록, 배경이 무슨 색으로 깜박이든 상관없이 항상 짙은 검정
+     알약 위에 흰 글자로 고정한다(단계별로 글자색을 반전시키는 대신 —
+     사용자가 더 단순한 이 방식을 선택). */
+  color: var(--text);
+  background: rgba(0, 0, 0, 0.82);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+/* 감속 단계는 캡션이 없다(요청 사양) — 하지만 textContent를 진짜 빈
+   문자열로 두면 <p>가 줄 상자(line box) 자체를 잃어 padding만 남은 높이가
+   되고, .phone의 justify-content:center가 전체를 다시 가운데 맞추면서
+   블루 링 위치가 위아래로 움찔거렸다(감속↔반복 전환 시 신고된 버그).
+   그래서 script.js는 빈 캡션에도 non-breaking space 한 글자를 채워
+   줄 상자 높이를 항상 동일하게 유지하고, 이 클래스로만 시각적으로 지운다
+   — 레이아웃에 영향 없이 안 보이게. */
+.phone-caption.is-blank {
+  visibility: hidden;
 }
 
 /* ---------- Blue Ring ---------- */
@@ -215,6 +294,56 @@ a { color: inherit; }
 }
 
 .ring-stage-lg { width: 220px; height: 220px; }
+
+/* 히어로 폰의 블루 링만 script.js가 매 프레임 직접 제어하는 데모 애니메이션
+   (아래 pulse→가속→카메라 경고→과속→감속 시퀀스)으로 대체한다 — 아래
+   #ring 섹션의 큰 링(.ring-stage-lg)은 원래의 은은한 breathe 애니메이션을
+   그대로 유지(피드백 대상이 히어로 폰 한정이라 여긴 손대지 않음). */
+.ring-stage-hero .blue-ring,
+.ring-stage-hero .ring-glow {
+  animation: none;
+}
+
+.speed-value {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+
+/* 전방 카메라 표지(lib/features/driving/view/speed_sign.dart의 SpeedSign/
+   OverspeedSign을 참고한 색 구성) — 평소엔 안 보이다가(opacity 0) 카메라
+   접근 단계에서 자라나며 나타난다. */
+.camera-sign {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f7f9fc;
+  border: 9px solid #e8383f;
+  color: #17181b;
+  font-size: 30px;
+  font-weight: 800;
+  opacity: 0;
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* 과속 통과 결과(OverspeedSign) — 색 반전: 빨간 바탕·흰 테두리·검정 숫자. */
+.camera-sign.is-overspeed {
+  background: #e8383f;
+  border-color: #f7f9fc;
+  color: #17181b;
+}
 
 .ring-core {
   position: absolute;
@@ -282,6 +411,13 @@ a { color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   .blue-ring { animation: none; }
+}
+
+/* prefers-reduced-motion일 때 script.js는 루프 자체를 돌리지 않고 정지 화면만
+   남긴다(아래 스크립트 참고) — 카메라 표지/화면 점멸은 처음부터 숨겨둔다. */
+@media (prefers-reduced-motion: reduce) {
+  .camera-sign { display: none; }
+  .phone-flash { display: none; }
 }
 
 /* ---------- Sections ---------- */
@@ -572,4 +708,13 @@ main section {
   .cards { grid-template-columns: 1fr; }
   .nav-links { display: none; }
   .steps li { grid-template-columns: 36px 1fr; }
+
+  /* 좁은 화면에서 블루 링/숫자/캡션이 상대적으로 작아 보인다는 피드백 —
+     ring-stage의 마스크·아이콘 두께가 전부 고정 px라 폰 크기 자체를
+     키우면 비율이 어긋나므로, .phone 전체를 transform으로 균일하게
+     확대한다(내부 conic-gradient·마스크·글자 크기가 전부 그대로 비례
+     커진다). transform은 레이아웃 높이에 반영되지 않아 원본 박스보다
+     커진 만큼 위아래로 넘치는데, .hero의 grid gap(48px)이 이를 충분히
+     흡수한다(1.12배 기준 상하 각 약 31px 초과, 여유 17px). */
+  .phone { transform: scale(1.12); }
 }

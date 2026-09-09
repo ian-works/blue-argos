@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>BlueArgos — 깨끗한 과속카메라 알림</title>
-<meta name="description" content="개인정보 입력 없이, 광고 없이, 데이터 통신과 배터리 사용을 최소화한 깨끗한 과속 단속 카메라 알림 앱 BlueArgos." />
+<title data-i18n="meta.title">BlueArgos — 깨끗한 과속카메라 알림</title>
+<meta name="description" data-i18n-attr="content:meta.description" content="개인정보 입력 없이, 광고 없이, 데이터 통신과 배터리 사용을 최소화한 깨끗한 과속 단속 카메라 알림 앱 BlueArgos." />
 <meta name="theme-color" content="#000000" />
 <link rel="icon" href="assets/app_icon.png" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="BlueArgos — 깨끗한 과속카메라 알림" />
-<meta property="og:description" content="개인정보 없이, 광고 없이, 배터리도 아끼며 조용히 지켜보는 과속카메라 알림 앱." />
+<meta property="og:title" data-i18n-attr="content:meta.title" content="BlueArgos — 깨끗한 과속카메라 알림" />
+<meta property="og:description" data-i18n-attr="content:meta.ogDescription" content="개인정보 없이, 광고 없이, 배터리도 아끼며 조용히 지켜보는 과속카메라 알림 앱." />
 <meta property="og:image" content="assets/app_icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,12 +24,15 @@
       <span class="brand-mark" aria-hidden="true"></span>
       <span class="brand-name">BlueArgos</span>
     </a>
-    <nav class="nav-links" aria-label="주요 섹션">
-      <a href="#promise">원칙</a>
-      <a href="#how">동작 방식</a>
-      <a href="#ring">블루 링</a>
-      <a href="releases.html">릴리즈</a>
-    </nav>
+    <div class="nav-right">
+      <nav class="nav-links" data-i18n-attr="aria-label:nav.ariaLabel" aria-label="주요 섹션">
+        <a href="#promise" data-i18n="nav.principles">원칙</a>
+        <a href="#how" data-i18n="nav.how">동작 방식</a>
+        <a href="#ring" data-i18n="nav.ring">블루 링</a>
+        <a href="releases.html" data-i18n="nav.releases">릴리즈</a>
+      </nav>
+      <button type="button" class="lang-toggle" data-lang-toggle>EN</button>
+    </div>
   </div>
 </header>
 
@@ -37,9 +40,9 @@
 
   <section class="hero">
     <div class="hero-inner">
-      <p class="eyebrow">개인정보 없음 · 광고 없음 · 통신·배터리 최소화</p>
-      <h1>깨끗하고 쾌적한<br class="br-mobile" /> 과속 카메라 알림</h1>
-      <p class="hero-lead">
+      <p class="eyebrow" data-i18n="hero.eyebrow">개인정보 없음 · 광고 없음 · 통신·배터리 최소화</p>
+      <h1 data-i18n="hero.h1">깨끗하고 쾌적한<br class="br-mobile" /> 과속 카메라 알림</h1>
+      <p class="hero-lead" data-i18n="hero.lead">
         BlueArgos는 이름도 화면도 배터리도 군더더기가 없습니다.
         아무것도 입력하지 않아도 되고, 광고가 끼어들지 않으며,
         데이터 통신과 배터리 사용을 최소한으로 줄인
@@ -47,20 +50,25 @@
       </p>
       <div class="hero-badges">
         <span class="pill">iOS · Android</span>
-        <span class="pill pill-muted">현재 개발 중</span>
+        <span class="pill pill-muted" data-i18n="hero.badge2">현재 개발 중</span>
       </div>
     </div>
 
     <div class="hero-visual" aria-hidden="true">
       <div class="phone">
         <div class="phone-notch"></div>
+        <div class="phone-flash" data-flash></div>
         <div class="phone-screen">
-          <div class="ring-stage">
+          <div class="ring-stage ring-stage-hero" data-ring-stage>
             <div class="ring-core"></div>
-            <div class="ring-glow"></div>
-            <div class="blue-ring"></div>
+            <div class="ring-glow" data-ring-glow></div>
+            <div class="blue-ring" data-ring></div>
+            <div class="camera-sign" data-camera-sign>
+              <span data-camera-sign-text>100</span>
+            </div>
+            <div class="speed-value" data-speed-value>5</div>
           </div>
-          <p class="phone-caption">정상 주행 중</p>
+          <p class="phone-caption" data-phone-caption>저속 주행</p>
         </div>
       </div>
     </div>
@@ -68,8 +76,8 @@
 
   <section id="promise" class="promise">
     <div class="section-head">
-      <h2>지켜보되, 캐묻지 않습니다</h2>
-      <p>이름의 뜻 그대로 — 그리스 신화 속 눈이 백 개 달린 감시자 아르고스(Argos)처럼 늘 지켜보지만,
+      <h2 data-i18n="promise.h2">지켜보되, 캐묻지 않습니다</h2>
+      <p data-i18n="promise.p">이름의 뜻 그대로 — 그리스 신화 속 눈이 백 개 달린 감시자 아르고스(Argos)처럼 늘 지켜보지만,
         정작 사용자에 대해서는 아무것도 묻지 않습니다.</p>
     </div>
 
@@ -78,68 +86,68 @@
         <div class="card-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.6-3 8.4-7 10-4-1.6-7-5.4-7-10V6l7-3z"/><path d="M9.5 12l1.8 1.8L14.8 10"/></svg>
         </div>
-        <h3>개인정보 입력 없음</h3>
+        <h3 data-i18n="card1.h3">개인정보 입력 없음</h3>
         <ul class="card-points">
-          <li><strong>회원가입, 차량 정보 필요 없음</strong> — App을 설치하고 바로 사용하면 됩니다. Android의 루틴, iOS의 자동화 기능을 사용하면 차량 탑승시 자동실행 하차시 자동 종료됩니다.</li>
-          <li><strong>목적지 입력 없음</strong> — 어디로 가는지 몰라도 됩니다. 경로를 넣지 않아도 주변 카메라를 그때그때 알려줍니다.</li>
+          <li data-i18n="card1.li1"><strong>회원가입, 차량 정보 필요 없음</strong> — App을 설치하고 바로 사용하면 됩니다. Android의 루틴, iOS의 자동화 기능을 사용하면 차량 탑승시 자동실행 하차시 자동 종료됩니다.</li>
+          <li data-i18n="card1.li2"><strong>목적지 입력 없음</strong> — 어디로 가는지 몰라도 됩니다. 경로를 넣지 않아도 주변 카메라를 그때그때 알려줍니다.</li>
         </ul>
       </article>
       <article class="card">
         <div class="card-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a7 7 0 100-14 7 7 0 000 14z"/><path d="M12 9v3.5l2.2 2.2"/><path d="M3 3l18 18"/></svg>
         </div>
-        <h3>통신 최소화</h3>
-        <p>카메라 위치는 미리 내려받아 기기에 저장한 정적 데이터로 판단합니다. 실시간으로 서버에 묻지 않아도 항상 동작하고, 갱신될 때마다 받는 양도 약 3MB 수준 — 지도를 계속 스트리밍하는 일반 내비게이션 데이터 사용량의 100분의 1 정도밖에 안 됩니다.</p>
+        <h3 data-i18n="card2.h3">통신 최소화</h3>
+        <p data-i18n="card2.p">카메라 위치는 미리 내려받아 기기에 저장한 정적 데이터로 판단합니다. 실시간으로 서버에 묻지 않아도 항상 동작하고, 갱신될 때마다 받는 양도 약 3MB 수준 — 지도를 계속 스트리밍하는 일반 내비게이션 데이터 사용량의 100분의 1 정도밖에 안 됩니다.</p>
       </article>
       <article class="card">
         <div class="card-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="17" height="8" rx="2"/><path d="M22 10.5v3"/><path d="M6 11.5v2"/></svg>
         </div>
-        <h3>배터리 최소화</h3>
-        <p>저속 구간에서는 위치 확인 주기를 늘리고, 실제로 필요한 순간에만 정밀 추적으로 전환합니다.</p>
+        <h3 data-i18n="card3.h3">배터리 최소화</h3>
+        <p data-i18n="card3.p">저속 구간에서는 위치 확인 주기를 늘리고, 실제로 필요한 순간에만 정밀 추적으로 전환합니다.</p>
       </article>
       <article class="card">
         <div class="card-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M8 7V5.5a4 4 0 018 0V7"/><path d="M3 3l18 18"/></svg>
         </div>
-        <h3>광고 없음</h3>
-        <p>배너도, 팝업도, 리워드 영상도 없습니다. 광고 대신 한 번만 저렴하게 구매하면 끝 — 평생 자동으로 업데이트됩니다.</p>
+        <h3 data-i18n="card4.h3">광고 없음</h3>
+        <p data-i18n="card4.p">배너도, 팝업도, 리워드 영상도 없습니다. 광고 대신 한 번만 저렴하게 구매하면 끝 — 평생 자동으로 업데이트됩니다.</p>
       </article>
     </div>
   </section>
 
   <section id="how" class="how">
     <div class="section-head">
-      <h2>동작 방식</h2>
-      <p>과속카메라가 가까워질 때만 목소리를 냅니다. 나머지는 조용합니다.</p>
+      <h2 data-i18n="how.h2">동작 방식</h2>
+      <p data-i18n="how.p">과속카메라가 가까워질 때만 목소리를 냅니다. 나머지는 조용합니다.</p>
     </div>
     <ol class="steps">
       <li>
         <span class="step-num">1</span>
         <div>
-          <h3>사전 경고</h3>
-          <p>흔한 내비게이션은 카메라까지 남은 "거리"로 경고합니다 — 그래서 저속일 땐 쓸데없이 일찍, 자칫하면 늦게 울리기도 합니다. BlueArgos는 지금 속도로 도달하기까지 남은 "시간"(기본 20초)을 기준으로 삼아, 얼마나 빠르게 달리든 항상 같은 여유를 두고 알립니다.</p>
+          <h3 data-i18n="step1.h3">사전 경고</h3>
+          <p data-i18n="step1.p">흔한 내비게이션은 카메라까지 남은 "거리"로 경고합니다 — 그래서 저속일 땐 쓸데없이 일찍, 자칫하면 늦게 울리기도 합니다. BlueArgos는 지금 속도로 도달하기까지 남은 "시간"(기본 20초)을 기준으로 삼아, 얼마나 빠르게 달리든 항상 같은 여유를 두고 알립니다.</p>
         </div>
       </li>
       <li>
         <span class="step-num">2</span>
         <div>
-          <h3>반복 경고</h3>
-          <p>속도를 줄이지 않으면 규정속도 이하가 될 때까지 알림이 이어집니다. 줄이면 곧바로 멈춥니다.</p>
+          <h3 data-i18n="step2.h3">반복 경고</h3>
+          <p data-i18n="step2.p">속도를 줄이지 않으면 규정속도 이하가 될 때까지 알림이 이어집니다. 줄이면 곧바로 멈춥니다.</p>
         </div>
       </li>
       <li>
         <span class="step-num">3</span>
         <div>
-          <h3>통과 후 안내</h3>
-          <p>과속 상태로 카메라를 지났다면 그 사실만 짧게 안내합니다. 규정을 지켰다면 아무 말도 하지 않습니다.</p>
+          <h3 data-i18n="step3.h3">통과 후 안내</h3>
+          <p data-i18n="step3.p">과속 상태로 카메라를 지났다면 그 사실만 짧게 안내합니다. 규정을 지켰다면 아무 말도 하지 않습니다.</p>
         </div>
       </li>
       <li>
         <span class="step-num">4</span>
         <div>
-          <h3>자동 보정 업데이트</h3>
-          <p>잘못됐거나 오래된 카메라 정보를 발견하면, 정기 갱신 주기(평균 2주, 최대 한 달) 안에 자동으로 바로잡혀 다음 업데이트에 반영됩니다. 사용자가 따로 신고하거나 손볼 일은 없습니다.</p>
+          <h3 data-i18n="step4.h3">자동 보정 업데이트</h3>
+          <p data-i18n="step4.p">잘못됐거나 오래된 카메라 정보를 발견하면, 정기 갱신 주기(평균 2주, 최대 한 달) 안에 자동으로 바로잡혀 다음 업데이트에 반영됩니다. 사용자가 따로 신고하거나 손볼 일은 없습니다.</p>
         </div>
       </li>
     </ol>
@@ -154,12 +162,12 @@
       </div>
     </div>
     <div class="ring-section-text">
-      <h2>블루 링</h2>
-      <p>
+      <h2 data-i18n="ring.h2">블루 링</h2>
+      <p data-i18n="ring.p1">
         평소 화면 중앙에는 은은하게 숨 쉬는 파란 원, <strong>블루 링</strong>이 켜져 있습니다.
         전방에 알릴 카메라가 없다는 뜻이자, 앱이 조용히 정상 동작 중이라는 신호입니다.
       </p>
-      <p>
+      <p data-i18n="ring.p2">
         말이 많은 앱이 되고 싶지 않았습니다. 아무 일도 없을 땐 화면도, 소리도, 배터리도 최대한 아낍니다 —
         정말 알려야 할 순간에만 목소리를 냅니다.
       </p>
@@ -174,10 +182,10 @@
       <span class="brand-mark" aria-hidden="true"></span>
       <span>BlueArgos</span>
     </div>
-    <p class="footer-note">
+    <p class="footer-note" data-i18n="footer.note">
       과속카메라 위치 데이터 출처: 경찰청 · 공공데이터포털(data.go.kr), 공공누리 제1유형(출처표시).
     </p>
-    <p class="footer-copy">© BlueArgos. 개인정보를 수집하지 않는 앱입니다.</p>
+    <p class="footer-copy" data-i18n="footer.copy">© BlueArgos. 개인정보를 수집하지 않는 앱입니다.</p>
   </div>
 </footer>
 
