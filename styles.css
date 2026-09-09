@@ -44,6 +44,11 @@ a { color: inherit; }
   top: 0;
   z-index: 50;
   background: rgba(0, 0, 0, 0.72);
+  /* iOS Safari는 접두사 없는 backdrop-filter를 오래 지원 안 했다 —
+     -webkit- 없이는 조용히 무시되거나(구버전) sticky와 겹쳐 합성이
+     불안정해지는 경우가 있었다("햄버거 버튼이 흐릿하게 보이고 안 눌림"
+     피드백의 원인 중 하나). */
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
@@ -94,6 +99,7 @@ a { color: inherit; }
   font-size: 14px;
   font-weight: 500;
   transition: color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .nav-links a:hover { color: var(--text); }
@@ -136,14 +142,34 @@ a { color: inherit; }
   appearance: none;
   background: transparent;
   border: none;
-  padding: 4px;
   color: var(--text);
   cursor: pointer;
   align-items: center;
   justify-content: center;
+  /* iOS에서 "흐릿하게 보이고 안 눌림" 신고 대응 — 아이콘 버튼 특유의
+     iOS Safari 문제 세 가지를 한 번에 고친다:
+     1) 44×44px 미만 터치 타겟은 손가락으로 정확히 누르기 어렵다(애플
+        HIG 최소 권장치가 44pt) — min-width/height로 확보.
+     2) 기본 회색 탭 하이라이트가 어두운 헤더 위에서 얼룩(흐릿함)처럼
+        보인다 — 투명하게.
+     3) touch-action 없이는 iOS가 탭을 확대/더블탭 후보로 잠깐 보류하며
+        300ms 지연이 생겨 "눌러도 반응이 없다"처럼 느껴질 수 있다. */
+  min-width: 44px;
+  min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  position: relative;
+  z-index: 2;
 }
 
-.nav-toggle svg { width: 22px; height: 22px; }
+.nav-toggle svg {
+  width: 22px;
+  height: 22px;
+  /* svg 자체가 탭을 가로채 버튼의 클릭 이벤트가 새지 않게(중첩 SVG를
+     직접 탭했을 때 iOS WebKit에서 간헐적으로 버튼까지 안 이어지는
+     문제가 있었다) — 탭은 항상 부모 button이 받는다. */
+  pointer-events: none;
+}
 
 /* ---------- Hero ---------- */
 
@@ -1148,6 +1174,7 @@ main section {
     flex-direction: column;
     gap: 0;
     background: rgba(0, 0, 0, 0.94);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding: 4px 24px 12px;
