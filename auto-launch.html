@@ -20,12 +20,17 @@
       <img class="brand-mark" src="assets/app_icon.png" alt="" aria-hidden="true" />
       <span class="brand-name">BlueArgos</span>
     </a>
-    <nav class="nav-links" aria-label="주요 섹션">
-      <a href="index.html#promise">차별점</a>
-      <a href="index.html#how">동작 방식</a>
-      <a href="auto-launch.html" aria-current="page">자동 실행/종료 설정법</a>
-      <a href="releases.html">업데이트 내역</a>
-    </nav>
+    <div class="nav-right">
+      <nav class="nav-links" id="nav-links" aria-label="주요 섹션">
+        <a href="index.html#promise">차별점</a>
+        <a href="index.html#how">동작 방식</a>
+        <a href="auto-launch.html" aria-current="page">자동 실행/종료 설정법</a>
+        <a href="releases.html">업데이트 내역</a>
+      </nav>
+      <button type="button" class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="nav-links">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -297,6 +302,7 @@
   </div>
 </footer>
 
+<script src="nav-toggle.js"></script>
 <script src="auto-launch.js"></script>
 </body>
 </html>

@@ -127,6 +127,24 @@ a { color: inherit; }
   border-color: rgba(94, 168, 255, 0.5);
 }
 
+/* 모바일 nav 메뉴 토글(햄버거) — 데스크톱에선 안 보이다가, 아래
+   @media(max-width:520px)에서 .nav-links가 접히는 대신 이 버튼으로
+   펼쳐지는 드롭다운으로 바뀐다("모바일에선 메뉴가 안 보여" 피드백 수정 —
+   예전엔 그냥 display:none으로 숨기기만 하고 대안이 없었다). */
+.nav-toggle {
+  display: none;
+  appearance: none;
+  background: transparent;
+  border: none;
+  padding: 4px;
+  color: var(--text);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-toggle svg { width: 22px; height: 22px; }
+
 /* ---------- Hero ---------- */
 
 .hero {
@@ -1115,7 +1133,35 @@ main section {
 
 @media (max-width: 520px) {
   .cards { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
+
+  /* nav-links는 헤더 아래로 접히는 드롭다운이 되고(.is-open일 때만 펼침),
+     그걸 여닫는 햄버거 버튼이 대신 보인다. .nav(sticky)가 이 드롭다운의
+     기준 위치가 된다. */
+  .nav-toggle { display: flex; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(0, 0, 0, 0.94);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 4px 24px 12px;
+  }
+
+  .nav-links.is-open { display: flex; }
+
+  .nav-links a {
+    padding: 13px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .nav-links a:last-child { border-bottom: none; }
+
   .steps li { grid-template-columns: 36px 1fr; }
 
   /* 좁은 화면에서 블루 링/숫자/캡션이 상대적으로 작아 보인다는 피드백(1차
