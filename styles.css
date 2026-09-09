@@ -890,6 +890,181 @@ main section {
   font-size: 14px;
 }
 
+/* ---------- Auto-launch guide page(auto-launch.html) ---------- */
+
+.guide-head { padding-bottom: 24px !important; }
+
+.guide-head h1 {
+  font-size: clamp(28px, 3.4vw, 38px);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 0 0 12px;
+}
+
+.guide-head p {
+  color: var(--text-dim);
+  font-size: 15px;
+  max-width: 62ch;
+  margin: 0;
+}
+
+.guide-tabs-section { padding-top: 0 !important; }
+
+/* Android/iOS 탭 — 한 번에 한 플랫폼 안내만 보여준다. */
+.platform-tabs {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 999px;
+  margin-bottom: 40px;
+}
+
+.platform-tab {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.platform-tab:hover { color: var(--text); }
+
+.platform-tab.is-active {
+  background: var(--ring);
+  color: #06101f;
+}
+
+.platform-panel[hidden] { display: none; }
+
+.guide-note {
+  background: rgba(94, 168, 255, 0.08);
+  border: 1px solid rgba(94, 168, 255, 0.22);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  color: var(--text-dim);
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin: 0 0 32px;
+}
+
+.guide-note strong { color: var(--text); }
+
+/* 흐름 다이어그램 — "무엇이 조건이고 무엇이 결과인지"를 글보다 먼저
+   그림으로 한눈에 보여준다(요청: "최대한 그림을 활용"). */
+.flow-diagram {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 32px 24px;
+  margin: 0 0 40px;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-lg);
+}
+
+.flow-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 130px;
+}
+
+.flow-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(94, 168, 255, 0.12);
+  border: 1px solid rgba(94, 168, 255, 0.3);
+  color: var(--ring);
+}
+
+.flow-icon img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.flow-icon svg { width: 26px; height: 26px; }
+
+.flow-node span {
+  font-size: 12.5px;
+  color: var(--text-dim);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.flow-arrow {
+  color: var(--ring);
+  font-size: 22px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.guide-steps {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0;
+  display: grid;
+  gap: 26px;
+}
+
+.guide-step {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.guide-step-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(94, 168, 255, 0.35);
+  color: var(--ring);
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.guide-step h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.guide-step p {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.guide-step p strong { color: var(--text); }
+
+.guide-subhead {
+  font-size: 19px;
+  font-weight: 800;
+  margin: 48px 0 16px;
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 860px) {
