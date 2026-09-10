@@ -406,7 +406,14 @@ a { color: inherit; }
 /* 전방 카메라 표지(lib/features/driving/view/speed_sign.dart의 SpeedSign/
    OverspeedSign을 참고한 색 구성) — 평소엔 안 보이다가(opacity 0) 카메라
    접근 단계에서 자라나며 나타난다. inset:0라 ring-stage-hero 크기를
-   그대로 따라가고, 테두리·글자만 같은 비율(×1.2)로 맞춰 키운다. */
+   그대로 따라가고, 테두리·글자만 같은 비율(×1.2)로 맞춰 키운다.
+   테두리 굵기는 같은 ring-stage-hero의 .blue-ring 마스크 두께(14px×1.2=
+   16.8px, 아래 .ring-stage-hero .blue-ring 참고)와 맞춘 값 — 예전엔
+   11px로 따로 놀아서, 속도가 올라가며 블루 링에서 이 표지로 넘어갈 때
+   테두리 굵기가 갑자기 얇아져 보였다(디자인 피드백으로 발견, 수정).
+   숫자 폰트도 .speed-value와 같은 weight 700 + tabular-nums로 맞춰,
+   숫자가 늘어나며 "5" → "100"/"+20"으로 넘어갈 때 자연스럽게 이어지도록
+   한다. */
 .camera-sign {
   position: absolute;
   inset: 0;
@@ -416,10 +423,11 @@ a { color: inherit; }
   align-items: center;
   justify-content: center;
   background: #f7f9fc;
-  border: 11px solid #e8383f;
+  border: 16.8px solid #e8383f;
   color: #17181b;
   font-size: 36px;
-  font-weight: 800;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
   opacity: 0;
   box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.5);
   transition: background-color 0.2s ease, border-color 0.2s ease;
@@ -674,7 +682,12 @@ main section {
 }
 
 /* 실제 표지판 스타일(speed_sign.dart의 SpeedSign) — 흰 바탕·빨간 테두리·
-   검정 숫자를 그대로 축소해 옮겼다. */
+   검정 숫자를 그대로 축소해 옮겼다. 테두리 굵기는 .camera-sign과 같은
+   원 지름 대비 비율(블루 링의 스트로크 비율, 7/60 — 120px 기본 링에서
+   14px, 144px 히어로 링에서 16.8px로 쓰인 값과 동일 비율)로 맞춘 값
+   (72px × 7/60 = 8.4px, 예전엔 6px로 이 비율보다 얇았음). 숫자 폰트도
+   .speed-value/.camera-sign과 같은 weight 700 + tabular-nums로 통일해
+   과속 애니메이션 전체에서 숫자 두께가 같아 보이게 한다. */
 .mini-sign {
   position: relative;
   width: 72px;
@@ -684,10 +697,11 @@ main section {
   align-items: center;
   justify-content: center;
   background: #f7f9fc;
-  border: 6px solid var(--accent-red);
+  border: 8.4px solid var(--accent-red);
   color: #17181b;
   font-size: 22px;
-  font-weight: 800;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
   box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.6);
 }
 
