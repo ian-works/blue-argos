@@ -229,6 +229,8 @@
   var SPEED_LOW = "#9aa0a8"; // speedReadoutColorLow(<30km/h)
   var SPEED_MID = "#f5f6f8"; // speedReadoutColorMid(<100km/h)
   var SPEED_HIGH = "#e8383f"; // speedReadoutColorHigh(≥100km/h)
+  var SPEED_HIGH_THRESHOLD = 100; // 숫자·링 색이 레드로 "전환되기 시작"하는 속도
+  var COLOR_FULL_RED_KMH = 110; // 숫자·링 둘 다 완전한 레드가 되는 속도 — 이 사이를 함께 lerp
   var FLASH_LIGHT = "#ffffff"; // warningBgLight
   var FLASH_DARK = "#000000"; // warningBgDark
   var VERDICT_BG = "#8e0f16"; // overspeedVerdictBg
@@ -269,10 +271,17 @@
     var inv = 1 - t;
     return 1 - inv * inv * inv;
   }
+  // 100~110km/h 구간에서 MID(흰색)→HIGH(빨강)로 서서히 섞는다 — 블루 링이
+  // 같은 구간에서 블루→레드로 섞이는 것(ringColorRgbForSpeed)과 정확히
+  // 같은 속도 범위를 공유해, 숫자와 링이 "함께" 빨개지는 것처럼 보이게
+  // 한다. 100km/h에서 갑자기 순백→빨강으로 계단식 전환되던 것을 고쳤다.
   function speedColor(kmh) {
     if (kmh < 30) return SPEED_LOW;
-    if (kmh < 100) return SPEED_MID;
-    return SPEED_HIGH;
+    if (kmh >= COLOR_FULL_RED_KMH) return SPEED_HIGH;
+    if (kmh < SPEED_HIGH_THRESHOLD) return SPEED_MID;
+    var tt = (kmh - SPEED_HIGH_THRESHOLD) / (COLOR_FULL_RED_KMH - SPEED_HIGH_THRESHOLD);
+    var rgb = lerpRgb(SPEED_MID_RGB, SPEED_HIGH_RGB, tt);
+    return "rgb(" + Math.round(rgb.r) + "," + Math.round(rgb.g) + "," + Math.round(rgb.b) + ")";
   }
 
   function clampRange(v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
@@ -283,6 +292,8 @@
   }
   var RING_BLUE_RGB = hexToRgb(RING_BLUE);
   var RING_RED_RGB = hexToRgb(RING_RED);
+  var SPEED_MID_RGB = hexToRgb(SPEED_MID);
+  var SPEED_HIGH_RGB = hexToRgb(SPEED_HIGH);
 
   // 링의 "호 길이"는 서로 다른 두 각도 마스크의 곱으로 정해진다(실제 앱
   // blue_ring_shape.dart의 `paintBlueRingShape`와 같은 방식) — 하나는 6시
@@ -345,6 +356,15 @@
     return { r: lerp(a.r, b.r, tt), g: lerp(a.g, b.g, tt), b: lerp(a.b, b.b, tt) };
   }
 
+  // 가속 중 링 색상 — speedColor()와 똑같은 구간(SPEED_HIGH_THRESHOLD=100
+  // ~COLOR_FULL_RED_KMH=110km/h)에서 블루→레드로 서서히 섞는다. 숫자
+  // 쪽(speedColor)도 같은 두 상수로 같은 구간에서 MID→HIGH를 섞으므로,
+  // 숫자와 링이 항상 같은 속도에서 같은 정도로 빨개진다.
+  function ringColorRgbForSpeed(kmh) {
+    var tt = clamp01((kmh - SPEED_HIGH_THRESHOLD) / (COLOR_FULL_RED_KMH - SPEED_HIGH_THRESHOLD));
+    return lerpRgb(RING_BLUE_RGB, RING_RED_RGB, tt);
+  }
+
   function paintRing(rgb, scale, opacity, innerHalf, outerHalf) {
     var gradient = ringGradient(rgb, innerHalf, outerHalf);
     var t = "scale(" + scale.toFixed(4) + ")";
@@ -373,7 +393,11 @@
   // 180(반원)을 "제한 없음"의 수치 대역값으로 써서 블렌드 보간이 항상
   // 숫자 대 숫자로 이뤄지게 한다.
   function setRing(now, scale, opacity, color, innerHalf, outerHalf) {
-    var rgb = color === RING_RED ? RING_RED_RGB : RING_BLUE_RGB;
+    // color는 보통 RING_BLUE/RING_RED 상수 문자열이지만, 가속 단계처럼
+    // 블루→레드를 서서히 섞어야 할 때는 ringColorRgbForSpeed()가 만든
+    // {r,g,b} 객체를 그대로 넘긴다.
+    var rgb = typeof color === "object" ? color
+      : color === RING_RED ? RING_RED_RGB : RING_BLUE_RGB;
     var inner = innerHalf == null ? 180 : innerHalf;
     var outer = outerHalf == null ? 180 : outerHalf;
 
@@ -529,15 +553,16 @@
       expandPhase = 0;
     } else if (name === "accel") {
       // 2. 5 → 110km/h 가속(6초) — 링은 "고속 확산" 웨이브로 전환되고,
-      // 속도가 오를수록 웨이브 주기가 짧아진다(더 자주 퍼진다). 110km/h에
-      // 도달하면 실제 앱처럼 링이 레드로 바뀐다. 동시에 실제 앱의 전방
-      // 회랑(corridor_angle.dart)처럼 밝은 호 자체도 속도가 빠를수록
-      // 좁아진다(70°/110° 반각 → 110km/h에서 최소 14°/30°).
+      // 속도가 오를수록 웨이브 주기가 짧아진다(더 자주 퍼진다). 속도 숫자가
+      // 레드로 바뀌는 100km/h부터 110km/h까지 링도 함께 블루→레드로 서서히
+      // 바뀐다(ringColorRgbForSpeed 참고). 동시에 실제 앱의 전방 회랑
+      // (corridor_angle.dart)처럼 밝은 호 자체도 속도가 빠를수록 좁아진다
+      // (70°/110° 반각 → 110km/h에서 최소 14°/30°).
       var speed = lerp(5, 110, easeInOut(t));
       expandPhase = (expandPhase + dt / expandPeriodMsForSpeed(speed)) % 1;
       var frame = expandWaveFrame(expandPhase);
       setRing(
-        now, frame.scale, frame.opacity, speed >= 110 ? RING_RED : RING_BLUE,
+        now, frame.scale, frame.opacity, ringColorRgbForSpeed(speed),
         blueRingInnerHalfDeg(speed), blueRingOuterHalfDeg(speed)
       );
       setSign(0, 0.2, -24, false);
