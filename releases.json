@@ -1,6 +1,23 @@
 {
   "releases": [
     {
+      "tag": "nmm-build-1.0.0-94",
+      "version": "1.0.0+94",
+      "date": "2026-09-12",
+      "ko": [
+        "차에서 내려 앱이 화면에서 물러나면 \"카메라 알림 중지\"라고 안내한 뒤 음성 알림을 멈추고, 설정한 시간이 지나면 자동으로 종료됩니다. 안드로이드에서는 알림창 표시도 함께 사라집니다.",
+        "설정에 \"알림 중지 후 자동 종료 시간\"이 추가됐습니다(3~10분, 기본 5분). 다른 앱을 쓰다가 돌아오면 알림이 즉시 다시 켜집니다.",
+        "통화 중이어서 안내가 나갈 수 없었던 경우, 통화가 끝난 뒤 한 번 더 알려줍니다.",
+        "음성 안내를 사용할 수 없을 때 화면 가운데에 주의 창을 띄워 알려줍니다."
+      ],
+      "en": [
+        "When the app moves off screen after you leave the car, it announces \"camera alerts paused\", stops voice alerts, and shuts down automatically once the time you set has passed. On Android the notification entry disappears as well.",
+        "Added \"Auto-stop delay after pausing alerts\" in Settings (3-10 minutes, default 5). Alerts come straight back when you return from another app.",
+        "If a phone call prevented the announcement from playing, it is repeated once the call ends.",
+        "When voice guidance is unavailable, a warning panel now appears in the centre of the screen."
+      ]
+    },
+    {
       "tag": "nmm-build-1.0.0-83",
       "version": "1.0.0+83",
       "date": "2026-09-09",
