@@ -1160,6 +1160,15 @@ main section {
   margin: 48px 0 16px;
 }
 
+/* 자동 실행 안내의 "선택 사항" 소제목 — guide-subhead 아래 단계로,
+   같은 섹션 안에서 본문 흐름을 끊지 않을 만큼만 작게. */
+.guide-subhead-sm {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 36px 0 10px;
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 860px) {
