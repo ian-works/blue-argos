@@ -49,6 +49,7 @@
       "nav.how": "동작 방식",
       "nav.autoLaunch": "자동 실행/종료 설정법",
       "nav.releases": "업데이트 내역",
+      "nav.privacy": "개인정보 처리방침",
       "hero.eyebrow": "경로 설정 없음 · 개인정보 필요 없음 · 시간 기반 사전 알림 · 통신·배터리 사용 최소화 · 광고 없음",
       "hero.h1": "깨끗하고 편리한<br class=\"br-mobile\" /> 과속 카메라 알림",
       "hero.lead": "BlueArgos는 불안하게 개인 정보나 차량 정보를 요구하지 않습니다. 경로 설정도 필요 없습니다. 설치 후 실행만 하면 됩니다. 실행 중 데이터를 전혀 사용하지 않고 최소한의 배터리로 동작합니다. 그러면서도 <strong>BlueArgos만의 특허 기술</strong>로 편리함을 제공합니다.",
@@ -87,7 +88,7 @@
       "ring.p1": "평소 화면 중앙에는 은은하게 숨 쉬는 파란 원, <strong>블루 링</strong>이 켜져 있습니다. 전방에 알릴 카메라가 없다는 뜻이자, 앱이 조용히 정상 동작 중이라는 신호입니다.",
       "ring.p2": "꼭 필요할 때만 확실한 화면과 음성으로 안전한 운행을 도와드립니다.",
       "footer.note": "과속카메라 위치 데이터 출처: 경찰청 · 공공데이터포털(data.go.kr), 공공누리 제1유형(출처표시).",
-      "footer.copy": "© BlueArgos. 개인정보를 수집하지 않는 앱입니다."
+      "footer.copy": "© BlueArgos · 계정도, 광고도, 추적도 없습니다 · <a href=\"privacy.html\">개인정보 처리방침</a>"
     },
     en: {
       "meta.title": "BlueArgos — Clean Speed Camera Alerts",
@@ -98,6 +99,7 @@
       "nav.how": "How it works",
       "nav.autoLaunch": "Auto-Launch Setup",
       "nav.releases": "Update History",
+      "nav.privacy": "Privacy Policy",
       "hero.eyebrow": "No route needed · No personal data required · Time-based early alerts · Minimal data & battery use · No ads",
       "hero.h1": "Clean, convenient<br class=\"br-mobile\" /> speed camera alerts",
       "hero.lead": "BlueArgos never makes you uneasy by asking for personal or vehicle information. You don't need to set a route, either — just install it and run it. While it's running, it uses no data at all and runs on minimal battery. Even so, <strong>BlueArgos's own patented technology</strong> still keeps it convenient.",
@@ -136,7 +138,7 @@
       "ring.p1": "At the center of the screen, a softly breathing blue circle — the <strong>Blue Ring</strong> — stays lit. It means there's no camera ahead to warn you about, and that the app is quietly running as normal.",
       "ring.p2": "Only when it truly matters does it step in — with a clear screen alert and a clear voice — to help you drive safely.",
       "footer.note": "Speed camera location data source: Korea National Police Agency · Public Data Portal (data.go.kr), KOGL Type 1 (Attribution).",
-      "footer.copy": "© BlueArgos. An app that collects no personal data."
+      "footer.copy": "© BlueArgos · No account, no ads, no tracking · <a href=\"privacy.html\">Privacy Policy</a>"
     }
   };
 
