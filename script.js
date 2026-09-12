@@ -50,6 +50,7 @@
       "nav.autoLaunch": "자동 실행/종료 설정법",
       "nav.releases": "업데이트 내역",
       "nav.privacy": "개인정보 처리방침",
+      "nav.privacyHref": "privacy.html",
       "hero.eyebrow": "경로 설정 없음 · 개인정보 필요 없음 · 시간 기반 사전 알림 · 통신·배터리 사용 최소화 · 광고 없음",
       "hero.h1": "깨끗하고 편리한<br class=\"br-mobile\" /> 과속 카메라 알림",
       "hero.lead": "BlueArgos는 불안하게 개인 정보나 차량 정보를 요구하지 않습니다. 경로 설정도 필요 없습니다. 설치 후 실행만 하면 됩니다. 실행 중 데이터를 전혀 사용하지 않고 최소한의 배터리로 동작합니다. 그러면서도 <strong>BlueArgos만의 특허 기술</strong>로 편리함을 제공합니다.",
@@ -100,6 +101,7 @@
       "nav.autoLaunch": "Auto-Launch Setup",
       "nav.releases": "Update History",
       "nav.privacy": "Privacy Policy",
+      "nav.privacyHref": "privacy-en.html",
       "hero.eyebrow": "No route needed · No personal data required · Time-based early alerts · Minimal data & battery use · No ads",
       "hero.h1": "Clean, convenient<br class=\"br-mobile\" /> speed camera alerts",
       "hero.lead": "BlueArgos never makes you uneasy by asking for personal or vehicle information. You don't need to set a route, either — just install it and run it. While it's running, it uses no data at all and runs on minimal battery. Even so, <strong>BlueArgos's own patented technology</strong> still keeps it convenient.",
@@ -138,7 +140,7 @@
       "ring.p1": "At the center of the screen, a softly breathing blue circle — the <strong>Blue Ring</strong> — stays lit. It means there's no camera ahead to warn you about, and that the app is quietly running as normal.",
       "ring.p2": "Only when it truly matters does it step in — with a clear screen alert and a clear voice — to help you drive safely.",
       "footer.note": "Speed camera location data source: Korea National Police Agency · Public Data Portal (data.go.kr), KOGL Type 1 (Attribution).",
-      "footer.copy": "© BlueArgos · No account, no ads, no tracking · <a href=\"privacy.html\">Privacy Policy</a>"
+      "footer.copy": "© BlueArgos · No account, no ads, no tracking · <a href=\"privacy-en.html\">Privacy Policy</a>"
     }
   };
 

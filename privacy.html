@@ -381,5 +381,23 @@
 </footer>
 
 <script src="nav-toggle.js"></script>
+<script>
+// 이 문서는 한국어판·영어판이 별도 파일이라 script.js의 i18n 토글을 쓰지
+// 않는다. 다만 언어 선택은 사이트 전체가 localStorage("blueargos-lang")로
+// 공유하므로, 여기서 언어를 바꾸면 그 선택을 같은 키에 저장해 둔다 —
+// 안 그러면 여기서 영어로 넘어간 뒤 메인으로 돌아갔을 때 한국어로 되돌아간다.
+(function () {
+  var link = document.querySelector("a.lang-toggle");
+  if (!link) return;
+  link.addEventListener("click", function () {
+    try {
+      localStorage.setItem("blueargos-lang", "en");
+    } catch (e) {
+      // 저장 실패해도 이동 자체는 그대로 진행한다.
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
