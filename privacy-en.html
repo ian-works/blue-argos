@@ -53,11 +53,13 @@
     margin: 0;
     font-variant-numeric: tabular-nums;
   }
-  .legal-langswitch {
+  /* 사이트의 언어 전환은 항상 우상단 .lang-toggle이다. 이 문서는 한국어판과
+     영어판이 별도 파일이라 버튼 대신 <a>를 쓰지만, 겉모습·위치는 동일하게
+     맞춘다(styles.css의 .lang-toggle을 그대로 재사용). */
+  a.lang-toggle {
     display: inline-block;
-    margin-top: 14px;
-    font-size: 14px;
-    color: var(--ring);
+    text-decoration: none;
+    line-height: 1.5;
   }
 
   .legal-summary {
@@ -157,6 +159,7 @@
         <a href="releases.html">Update history</a>
         <a href="privacy-en.html" aria-current="page">Privacy Policy</a>
       </nav>
+      <a class="lang-toggle" href="privacy.html" aria-label="한국어로 전환">KO</a>
       <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -169,7 +172,6 @@
   <div class="legal-head">
     <h1>Privacy Policy</h1>
     <p class="legal-meta">Effective 12 September 2026 · First version</p>
-    <a class="legal-langswitch" href="privacy.html">한국어로 보기</a>
   </div>
 
   <div class="legal-summary">
